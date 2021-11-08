@@ -7,23 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21911E3B9833AEC39EBF77BF /* Pods_MVVMDemoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F036A50F2735A79FE9BA15D4 /* Pods_MVVMDemoApplication.framework */; };
+		3A035E3227380F6B00B29F25 /* ThirdVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A035E3027380F6B00B29F25 /* ThirdVCCollectionViewCell.swift */; };
+		3A035E3327380F6B00B29F25 /* ThirdVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A035E3127380F6B00B29F25 /* ThirdVCCollectionViewCell.xib */; };
+		3A3338F7273925F000F8CBEE /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338F6273925F000F8CBEE /* HomeRouter.swift */; };
+		3A3338FA27392E6100F8CBEE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338F927392E6100F8CBEE /* Router.swift */; };
+		3AB211CE2733DF2100A43B96 /* SecondVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB211CC2733DF2100A43B96 /* SecondVCTableViewCell.swift */; };
+		3AB211CF2733DF2100A43B96 /* SecondVCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB211CD2733DF2100A43B96 /* SecondVCTableViewCell.xib */; };
+		3AB98FAD2737BB38000B8531 /* SecondDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */; };
+		3AB98FAF2737BB52000B8531 /* TableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FAE2737BB52000B8531 /* TableViewCellModel.swift */; };
+		3AB98FB22737D2B8000B8531 /* StringsConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FB12737D2B8000B8531 /* StringsConstans.swift */; };
+		3AB98FB62737DF2D000B8531 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FB42737DF2D000B8531 /* ThirdViewController.swift */; };
+		3AB98FB72737DF2D000B8531 /* ThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB98FB52737DF2D000B8531 /* ThirdViewController.xib */; };
+		3AB98FBA2737F142000B8531 /* CGFlaotExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FB92737F142000B8531 /* CGFlaotExtension.swift */; };
+		3AB98FBC2737F17F000B8531 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FBB2737F17F000B8531 /* UIExtension.swift */; };
+		3AB98FBE2737F87F000B8531 /* PicsumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FBD2737F87F000B8531 /* PicsumManager.swift */; };
+		3AB98FC62738016C000B8531 /* ThirdDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FC52738016C000B8531 /* ThirdDataSource.swift */; };
+		3AB98FC827380606000B8531 /* CollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FC727380606000B8531 /* CollectionViewCellModel.swift */; };
 		3AE7138A2732BCF500481ED2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE713892732BCF500481ED2 /* AppDelegate.swift */; };
-		3AE7138C2732BCF500481ED2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7138B2732BCF500481ED2 /* SceneDelegate.swift */; };
-		3AE7138E2732BCF500481ED2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7138D2732BCF500481ED2 /* ViewController.swift */; };
-		3AE713912732BCF500481ED2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7138F2732BCF500481ED2 /* Main.storyboard */; };
 		3AE713932732BCF600481ED2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE713922732BCF600481ED2 /* Assets.xcassets */; };
 		3AE713962732BCF600481ED2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE713942732BCF600481ED2 /* LaunchScreen.storyboard */; };
+		3AE7139F2732D5C000481ED2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7139D2732D5C000481ED2 /* HomeViewController.swift */; };
+		3AE713A02732D5C000481ED2 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7139E2732D5C000481ED2 /* HomeViewController.xib */; };
+		3AE713A42732DC5500481ED2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE713A22732DC5500481ED2 /* SecondViewController.swift */; };
+		3AE713A52732DC5500481ED2 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE713A32732DC5500481ED2 /* SecondViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A035E3027380F6B00B29F25 /* ThirdVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdVCCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A035E3127380F6B00B29F25 /* ThirdVCCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdVCCollectionViewCell.xib; sourceTree = "<group>"; };
+		3A3338F6273925F000F8CBEE /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		3A3338F927392E6100F8CBEE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		3AB211CC2733DF2100A43B96 /* SecondVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVCTableViewCell.swift; sourceTree = "<group>"; };
+		3AB211CD2733DF2100A43B96 /* SecondVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondVCTableViewCell.xib; sourceTree = "<group>"; };
+		3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDataSource.swift; sourceTree = "<group>"; };
+		3AB98FAE2737BB52000B8531 /* TableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellModel.swift; sourceTree = "<group>"; };
+		3AB98FB12737D2B8000B8531 /* StringsConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsConstans.swift; sourceTree = "<group>"; };
+		3AB98FB42737DF2D000B8531 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		3AB98FB52737DF2D000B8531 /* ThirdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdViewController.xib; sourceTree = "<group>"; };
+		3AB98FB92737F142000B8531 /* CGFlaotExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFlaotExtension.swift; sourceTree = "<group>"; };
+		3AB98FBB2737F17F000B8531 /* UIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		3AB98FBD2737F87F000B8531 /* PicsumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsumManager.swift; sourceTree = "<group>"; };
+		3AB98FC52738016C000B8531 /* ThirdDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdDataSource.swift; sourceTree = "<group>"; };
+		3AB98FC727380606000B8531 /* CollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellModel.swift; sourceTree = "<group>"; };
 		3AE713862732BCF400481ED2 /* MVVMDemoApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMDemoApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE713892732BCF500481ED2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3AE7138B2732BCF500481ED2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3AE7138D2732BCF500481ED2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3AE713902732BCF500481ED2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AE713922732BCF600481ED2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AE713952732BCF600481ED2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AE713972732BCF600481ED2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AE7139D2732D5C000481ED2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3AE7139E2732D5C000481ED2 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		3AE713A22732DC5500481ED2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		3AE713A32732DC5500481ED2 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
+		6E6DC37770BC9526770034FE /* Pods-MVVMDemoApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemoApplication.release.xcconfig"; path = "Target Support Files/Pods-MVVMDemoApplication/Pods-MVVMDemoApplication.release.xcconfig"; sourceTree = "<group>"; };
+		83CE1C9604E3040E5BAB8712 /* Pods-MVVMDemoApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemoApplication.debug.xcconfig"; path = "Target Support Files/Pods-MVVMDemoApplication/Pods-MVVMDemoApplication.debug.xcconfig"; sourceTree = "<group>"; };
+		F036A50F2735A79FE9BA15D4 /* Pods_MVVMDemoApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMDemoApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +69,101 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21911E3B9833AEC39EBF77BF /* Pods_MVVMDemoApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E0BBEB692F9E6494DA2CE7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F036A50F2735A79FE9BA15D4 /* Pods_MVVMDemoApplication.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A3338F827392E5000F8CBEE /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				3A3338F927392E6100F8CBEE /* Router.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		3AB211D02734215800A43B96 /* SeconodTBCell */ = {
+			isa = PBXGroup;
+			children = (
+				3AB211CC2733DF2100A43B96 /* SecondVCTableViewCell.swift */,
+				3AB211CD2733DF2100A43B96 /* SecondVCTableViewCell.xib */,
+			);
+			path = SeconodTBCell;
+			sourceTree = "<group>";
+		};
+		3AB98FAB2737BB21000B8531 /* SecondModels */ = {
+			isa = PBXGroup;
+			children = (
+				3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */,
+				3AB98FAE2737BB52000B8531 /* TableViewCellModel.swift */,
+			);
+			path = SecondModels;
+			sourceTree = "<group>";
+		};
+		3AB98FB02737D27F000B8531 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				3AB98FB12737D2B8000B8531 /* StringsConstans.swift */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		3AB98FB32737DEF0000B8531 /* ThirdViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3AB98FC427380148000B8531 /* ThirdModels */,
+				3AB98FB42737DF2D000B8531 /* ThirdViewController.swift */,
+				3AB98FB52737DF2D000B8531 /* ThirdViewController.xib */,
+				3AB98FBF2737FB81000B8531 /* ThirdCollectionCell */,
+				3AB98FBD2737F87F000B8531 /* PicsumManager.swift */,
+			);
+			path = ThirdViewController;
+			sourceTree = "<group>";
+		};
+		3AB98FB82737F0DB000B8531 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3AB98FB92737F142000B8531 /* CGFlaotExtension.swift */,
+				3AB98FBB2737F17F000B8531 /* UIExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3AB98FBF2737FB81000B8531 /* ThirdCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				3A035E3027380F6B00B29F25 /* ThirdVCCollectionViewCell.swift */,
+				3A035E3127380F6B00B29F25 /* ThirdVCCollectionViewCell.xib */,
+			);
+			path = ThirdCollectionCell;
+			sourceTree = "<group>";
+		};
+		3AB98FC427380148000B8531 /* ThirdModels */ = {
+			isa = PBXGroup;
+			children = (
+				3AB98FC52738016C000B8531 /* ThirdDataSource.swift */,
+				3AB98FC727380606000B8531 /* CollectionViewCellModel.swift */,
+			);
+			path = ThirdModels;
+			sourceTree = "<group>";
+		};
 		3AE7137D2732BCF400481ED2 = {
 			isa = PBXGroup;
 			children = (
 				3AE713882732BCF400481ED2 /* MVVMDemoApplication */,
 				3AE713872732BCF400481ED2 /* Products */,
+				9486CA163F38B358BDCA4EC7 /* Pods */,
+				2E0BBEB692F9E6494DA2CE7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +179,47 @@
 			isa = PBXGroup;
 			children = (
 				3AE713892732BCF500481ED2 /* AppDelegate.swift */,
-				3AE7138B2732BCF500481ED2 /* SceneDelegate.swift */,
-				3AE7138D2732BCF500481ED2 /* ViewController.swift */,
-				3AE7138F2732BCF500481ED2 /* Main.storyboard */,
+				3A3338F827392E5000F8CBEE /* Routers */,
+				3AB98FB82737F0DB000B8531 /* Extension */,
+				3AB98FB02737D27F000B8531 /* Strings */,
+				3AE713A12732DBE100481ED2 /* HomeViewController */,
+				3AE713A62732DC5B00481ED2 /* SecondViewController */,
+				3AB98FB32737DEF0000B8531 /* ThirdViewController */,
 				3AE713922732BCF600481ED2 /* Assets.xcassets */,
 				3AE713942732BCF600481ED2 /* LaunchScreen.storyboard */,
 				3AE713972732BCF600481ED2 /* Info.plist */,
 			);
 			path = MVVMDemoApplication;
+			sourceTree = "<group>";
+		};
+		3AE713A12732DBE100481ED2 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3AE7139D2732D5C000481ED2 /* HomeViewController.swift */,
+				3AE7139E2732D5C000481ED2 /* HomeViewController.xib */,
+				3A3338F6273925F000F8CBEE /* HomeRouter.swift */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		3AE713A62732DC5B00481ED2 /* SecondViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3AE713A22732DC5500481ED2 /* SecondViewController.swift */,
+				3AE713A32732DC5500481ED2 /* SecondViewController.xib */,
+				3AB98FAB2737BB21000B8531 /* SecondModels */,
+				3AB211D02734215800A43B96 /* SeconodTBCell */,
+			);
+			path = SecondViewController;
+			sourceTree = "<group>";
+		};
+		9486CA163F38B358BDCA4EC7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83CE1C9604E3040E5BAB8712 /* Pods-MVVMDemoApplication.debug.xcconfig */,
+				6E6DC37770BC9526770034FE /* Pods-MVVMDemoApplication.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +229,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AE7139A2732BCF600481ED2 /* Build configuration list for PBXNativeTarget "MVVMDemoApplication" */;
 			buildPhases = (
+				70EC885DFD303E10FFE84CC0 /* [CP] Check Pods Manifest.lock */,
 				3AE713822732BCF400481ED2 /* Sources */,
 				3AE713832732BCF400481ED2 /* Frameworks */,
 				3AE713842732BCF400481ED2 /* Resources */,
+				F36FBDD41A0779015DDB4C23 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,36 +282,87 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE713A52732DC5500481ED2 /* SecondViewController.xib in Resources */,
+				3AB211CF2733DF2100A43B96 /* SecondVCTableViewCell.xib in Resources */,
+				3AB98FB72737DF2D000B8531 /* ThirdViewController.xib in Resources */,
+				3A035E3327380F6B00B29F25 /* ThirdVCCollectionViewCell.xib in Resources */,
 				3AE713962732BCF600481ED2 /* LaunchScreen.storyboard in Resources */,
 				3AE713932732BCF600481ED2 /* Assets.xcassets in Resources */,
-				3AE713912732BCF500481ED2 /* Main.storyboard in Resources */,
+				3AE713A02732D5C000481ED2 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		70EC885DFD303E10FFE84CC0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MVVMDemoApplication-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F36FBDD41A0779015DDB4C23 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVVMDemoApplication/Pods-MVVMDemoApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVVMDemoApplication/Pods-MVVMDemoApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVVMDemoApplication/Pods-MVVMDemoApplication-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3AE713822732BCF400481ED2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE7138E2732BCF500481ED2 /* ViewController.swift in Sources */,
+				3AE713A42732DC5500481ED2 /* SecondViewController.swift in Sources */,
 				3AE7138A2732BCF500481ED2 /* AppDelegate.swift in Sources */,
-				3AE7138C2732BCF500481ED2 /* SceneDelegate.swift in Sources */,
+				3AB98FBC2737F17F000B8531 /* UIExtension.swift in Sources */,
+				3A035E3227380F6B00B29F25 /* ThirdVCCollectionViewCell.swift in Sources */,
+				3A3338F7273925F000F8CBEE /* HomeRouter.swift in Sources */,
+				3AB211CE2733DF2100A43B96 /* SecondVCTableViewCell.swift in Sources */,
+				3AB98FAD2737BB38000B8531 /* SecondDataSource.swift in Sources */,
+				3AB98FC62738016C000B8531 /* ThirdDataSource.swift in Sources */,
+				3A3338FA27392E6100F8CBEE /* Router.swift in Sources */,
+				3AB98FAF2737BB52000B8531 /* TableViewCellModel.swift in Sources */,
+				3AB98FBE2737F87F000B8531 /* PicsumManager.swift in Sources */,
+				3AE7139F2732D5C000481ED2 /* HomeViewController.swift in Sources */,
+				3AB98FB62737DF2D000B8531 /* ThirdViewController.swift in Sources */,
+				3AB98FB22737D2B8000B8531 /* StringsConstans.swift in Sources */,
+				3AB98FC827380606000B8531 /* CollectionViewCellModel.swift in Sources */,
+				3AB98FBA2737F142000B8531 /* CGFlaotExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3AE7138F2732BCF500481ED2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3AE713902732BCF500481ED2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3AE713942732BCF600481ED2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,6 +492,7 @@
 		};
 		3AE7139B2732BCF600481ED2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83CE1C9604E3040E5BAB8712 /* Pods-MVVMDemoApplication.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,7 +503,7 @@
 				INFOPLIST_FILE = MVVMDemoApplication/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +521,7 @@
 		};
 		3AE7139C2732BCF600481ED2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E6DC37770BC9526770034FE /* Pods-MVVMDemoApplication.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,7 +532,7 @@
 				INFOPLIST_FILE = MVVMDemoApplication/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
