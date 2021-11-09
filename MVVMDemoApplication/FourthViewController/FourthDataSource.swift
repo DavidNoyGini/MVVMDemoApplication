@@ -1,22 +1,22 @@
 //
-//  SecondDataSource.swift
+//  FourthDataSource.swift
 //  MVVMDemoApplication
 //
-//  Created by David Noy on 07/11/2021.
+//  Created by David Noy on 09/11/2021.
 //
 
 import Foundation
 
-class SecondDataSource: ViewModel {
+class FourthDataSource: ViewModel {
     
-    var type: ViewModelType = .secondVC
+    var type: ViewModelType = .FourthVC
     var cellModels: [TableViewCellModel] = []
     
     func makeDataSource(number: Int)
     {
         for index in 0..<number
         {
-            cellModels.append(TableViewCellModel(tappedString: String(index)))
+            cellModels.append(TableViewCellModel(tappedString: String(index * 2)))
         }
     }
     

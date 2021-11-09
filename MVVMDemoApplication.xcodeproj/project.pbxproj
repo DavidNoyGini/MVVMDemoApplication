@@ -10,8 +10,13 @@
 		21911E3B9833AEC39EBF77BF /* Pods_MVVMDemoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F036A50F2735A79FE9BA15D4 /* Pods_MVVMDemoApplication.framework */; };
 		3A035E3227380F6B00B29F25 /* ThirdVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A035E3027380F6B00B29F25 /* ThirdVCCollectionViewCell.swift */; };
 		3A035E3327380F6B00B29F25 /* ThirdVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A035E3127380F6B00B29F25 /* ThirdVCCollectionViewCell.xib */; };
-		3A3338F7273925F000F8CBEE /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338F6273925F000F8CBEE /* HomeRouter.swift */; };
+		3A3338F7273925F000F8CBEE /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338F6273925F000F8CBEE /* MainRouter.swift */; };
 		3A3338FA27392E6100F8CBEE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338F927392E6100F8CBEE /* Router.swift */; };
+		3A3338FD273A78D400F8CBEE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338FC273A78D400F8CBEE /* ViewModel.swift */; };
+		3A333900273A7A8E00F8CBEE /* FourthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338FF273A7A8E00F8CBEE /* FourthDataSource.swift */; };
+		3A333903273AA74000F8CBEE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A333902273AA74000F8CBEE /* City.swift */; };
+		3A333905273AA78A00F8CBEE /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A333904273AA78A00F8CBEE /* Cities.swift */; };
+		3A333907273AA7E300F8CBEE /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A333906273AA7E300F8CBEE /* APIResult.swift */; };
 		3AB211CE2733DF2100A43B96 /* SecondVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB211CC2733DF2100A43B96 /* SecondVCTableViewCell.swift */; };
 		3AB211CF2733DF2100A43B96 /* SecondVCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB211CD2733DF2100A43B96 /* SecondVCTableViewCell.xib */; };
 		3AB98FAD2737BB38000B8531 /* SecondDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */; };
@@ -36,8 +41,13 @@
 /* Begin PBXFileReference section */
 		3A035E3027380F6B00B29F25 /* ThirdVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A035E3127380F6B00B29F25 /* ThirdVCCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdVCCollectionViewCell.xib; sourceTree = "<group>"; };
-		3A3338F6273925F000F8CBEE /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		3A3338F6273925F000F8CBEE /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		3A3338F927392E6100F8CBEE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		3A3338FC273A78D400F8CBEE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		3A3338FF273A7A8E00F8CBEE /* FourthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthDataSource.swift; sourceTree = "<group>"; };
+		3A333902273AA74000F8CBEE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		3A333904273AA78A00F8CBEE /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
+		3A333906273AA7E300F8CBEE /* APIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
 		3AB211CC2733DF2100A43B96 /* SecondVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVCTableViewCell.swift; sourceTree = "<group>"; };
 		3AB211CD2733DF2100A43B96 /* SecondVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondVCTableViewCell.xib; sourceTree = "<group>"; };
 		3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDataSource.swift; sourceTree = "<group>"; };
@@ -87,9 +97,38 @@
 		3A3338F827392E5000F8CBEE /* Routers */ = {
 			isa = PBXGroup;
 			children = (
+				3A3338F6273925F000F8CBEE /* MainRouter.swift */,
 				3A3338F927392E6100F8CBEE /* Router.swift */,
 			);
 			path = Routers;
+			sourceTree = "<group>";
+		};
+		3A3338FB273A78BD00F8CBEE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3A3338FC273A78D400F8CBEE /* ViewModel.swift */,
+				3AB98FAE2737BB52000B8531 /* TableViewCellModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3A3338FE273A79E900F8CBEE /* FourthViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3A333901273AA71800F8CBEE /* API */,
+				3A3338FF273A7A8E00F8CBEE /* FourthDataSource.swift */,
+			);
+			path = FourthViewController;
+			sourceTree = "<group>";
+		};
+		3A333901273AA71800F8CBEE /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3A333902273AA74000F8CBEE /* City.swift */,
+				3A333904273AA78A00F8CBEE /* Cities.swift */,
+				3A333906273AA7E300F8CBEE /* APIResult.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		3AB211D02734215800A43B96 /* SeconodTBCell */ = {
@@ -105,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */,
-				3AB98FAE2737BB52000B8531 /* TableViewCellModel.swift */,
 			);
 			path = SecondModels;
 			sourceTree = "<group>";
@@ -179,12 +217,14 @@
 			isa = PBXGroup;
 			children = (
 				3AE713892732BCF500481ED2 /* AppDelegate.swift */,
+				3A3338FB273A78BD00F8CBEE /* ViewModel */,
 				3A3338F827392E5000F8CBEE /* Routers */,
 				3AB98FB82737F0DB000B8531 /* Extension */,
 				3AB98FB02737D27F000B8531 /* Strings */,
 				3AE713A12732DBE100481ED2 /* HomeViewController */,
 				3AE713A62732DC5B00481ED2 /* SecondViewController */,
 				3AB98FB32737DEF0000B8531 /* ThirdViewController */,
+				3A3338FE273A79E900F8CBEE /* FourthViewController */,
 				3AE713922732BCF600481ED2 /* Assets.xcassets */,
 				3AE713942732BCF600481ED2 /* LaunchScreen.storyboard */,
 				3AE713972732BCF600481ED2 /* Info.plist */,
@@ -197,7 +237,6 @@
 			children = (
 				3AE7139D2732D5C000481ED2 /* HomeViewController.swift */,
 				3AE7139E2732D5C000481ED2 /* HomeViewController.xib */,
-				3A3338F6273925F000F8CBEE /* HomeRouter.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -345,17 +384,22 @@
 				3AE7138A2732BCF500481ED2 /* AppDelegate.swift in Sources */,
 				3AB98FBC2737F17F000B8531 /* UIExtension.swift in Sources */,
 				3A035E3227380F6B00B29F25 /* ThirdVCCollectionViewCell.swift in Sources */,
-				3A3338F7273925F000F8CBEE /* HomeRouter.swift in Sources */,
+				3A3338F7273925F000F8CBEE /* MainRouter.swift in Sources */,
 				3AB211CE2733DF2100A43B96 /* SecondVCTableViewCell.swift in Sources */,
+				3A3338FD273A78D400F8CBEE /* ViewModel.swift in Sources */,
 				3AB98FAD2737BB38000B8531 /* SecondDataSource.swift in Sources */,
 				3AB98FC62738016C000B8531 /* ThirdDataSource.swift in Sources */,
 				3A3338FA27392E6100F8CBEE /* Router.swift in Sources */,
 				3AB98FAF2737BB52000B8531 /* TableViewCellModel.swift in Sources */,
 				3AB98FBE2737F87F000B8531 /* PicsumManager.swift in Sources */,
+				3A333907273AA7E300F8CBEE /* APIResult.swift in Sources */,
 				3AE7139F2732D5C000481ED2 /* HomeViewController.swift in Sources */,
 				3AB98FB62737DF2D000B8531 /* ThirdViewController.swift in Sources */,
 				3AB98FB22737D2B8000B8531 /* StringsConstans.swift in Sources */,
 				3AB98FC827380606000B8531 /* CollectionViewCellModel.swift in Sources */,
+				3A333905273AA78A00F8CBEE /* Cities.swift in Sources */,
+				3A333900273A7A8E00F8CBEE /* FourthDataSource.swift in Sources */,
+				3A333903273AA74000F8CBEE /* City.swift in Sources */,
 				3AB98FBA2737F142000B8531 /* CGFlaotExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

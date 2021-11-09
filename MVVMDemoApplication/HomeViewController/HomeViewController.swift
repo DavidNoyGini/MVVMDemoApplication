@@ -13,7 +13,8 @@ class HomeViewController: UIViewController, Routing {
     @IBOutlet weak var dataPassedButton: UIButton!
 
     var router: Router?
-    var choosenNumber: String?
+    var searchedString: String?
+    
     private var tapIsUnable: Bool = false
     private var tapCount: Int = 0
 
@@ -37,52 +38,60 @@ class HomeViewController: UIViewController, Routing {
 
         dataPassedButton.configuration?.baseBackgroundColor = .green
         dataPassedButton.configuration?.baseForegroundColor = .black
-//        dataPassedButton.configuration?.title = StringsConstans.dataPasssedButtonTitle
-//        dataPassedButton.configuration?.attributedTitle?.font = .systemFont(ofSize: 5)
        
     }
     
-    @IBAction func dataPassedTapped(_ sender: UIButton) {
-        
-        let thirdDataSource = ThirdDataSource()
-        let thirdVC = ThirdViewController()
-        thirdVC.thirdDataSource = thirdDataSource.makeDataSource(number: choosenNumber)
-        
-        let toThirdVC = UINavigationController(rootViewController: thirdVC)
-        toThirdVC.modalPresentationStyle = .fullScreen
-        
-        present(toThirdVC, animated: true)
+    @IBAction func startTapped(_ sender: UIButton) {
+        router?.eventOccurred(with: .toSecondVC)
     }
     
-    @IBAction func startTapped(_ sender: UIButton) {
-        
-        let secondVC = SecondViewController()
-        secondVC.numberSelsctedDelegate = self
-        secondVC.choosenNumber = choosenNumber
-        let toSeconedVC = UINavigationController(rootViewController: secondVC)
-        toSeconedVC.modalPresentationStyle = .fullScreen
-        present(toSeconedVC, animated: true)
-        
+    @IBAction func dataPassedTapped(_ sender: UIButton) {
+        router?.eventOccurred(with: .toThirdVC)
     }
+    
+
 
 }
 
-extension HomeViewController: NumberSelsctedDelegate {
-    func didSelectNumber(number: String?) {
+extension HomeViewController: SearchDelegate {
+    
+    func didSearch(search: String?, type: ViewModelType) {
         
-        choosenNumber = number
-        if let checkedNumber = number{
-            
+        switch type {
+        case .secondVC:
+            fromSecondVC(search: search)
+        case .FourthVC:
+            fromFourthVC(search: search)
+        default: break
+        }
+        
+        
+    }
+    
+    private func fromSecondVC(search: String?)
+    {
+        searchedString = search
+        if let checkedNumber = search
+        {
             startButton.configuration?.title = checkedNumber
             dataPassedButton.isHidden = false
             tapIsUnable = true
             animateButtonText()
-        } else {
+        } else
+        {
             startButton.configuration?.title = StringsConstans.startButtonTitle
             dataPassedButton.isHidden = true
             tapIsUnable = false
         }
-        
+    }
+    
+    private func fromFourthVC(search: String?)
+    {
+        if let checkedCity = search
+        {
+            dataPassedButton.setTitle(checkedCity, for: .normal)
+        }
+        searchedString = nil
     }
     
 }
@@ -99,20 +108,12 @@ extension HomeViewController {
         }
     }
     
-//    func buttonAnimation(){
-//
-//        dataPassedButton.configuration?.attributedTitle?.font = .systemFont(ofSize: 25)
-//
-//        UIView.animate(withDuration: 5.0) { [weak self]  in
-//                    self?.view.layoutIfNeeded()
-//                }
-//
-//    }
+
         
     private func animateButtonText()
       {
         guard let buttonTitleLabel = dataPassedButton.titleLabel else { return }
-        UIView.transition(with: buttonTitleLabel, duration: 2.0, options: [.curveEaseOut])
+        UIView.transition(with: buttonTitleLabel, duration: 1.0, options: [.curveEaseOut])
         { [weak self] in
             self?.dataPassedButton.setTitle(StringsConstans.dataPasssedButtonTitle, for: .normal)
           self?.view.layoutIfNeeded()

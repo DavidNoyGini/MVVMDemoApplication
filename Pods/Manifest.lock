@@ -2,19 +2,27 @@ PODS:
   - EzHTTP (3.6.1)
   - EzImageLoader (3.5.1):
     - EzHTTP
+  - Reusable (4.1.2):
+    - Reusable/Storyboard (= 4.1.2)
+    - Reusable/View (= 4.1.2)
+  - Reusable/Storyboard (4.1.2)
+  - Reusable/View (4.1.2)
 
 DEPENDENCIES:
   - EzImageLoader
+  - Reusable
 
 SPEC REPOS:
   trunk:
     - EzHTTP
     - EzImageLoader
+    - Reusable
 
 SPEC CHECKSUMS:
   EzHTTP: d8f7e50a69bbcd6ae4f9853692d6bc5cf92e598b
   EzImageLoader: a930cbd57aaca0dbc3515ad3ff4639843d8658d9
+  Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
 
-PODFILE CHECKSUM: a98dcd173c2901191eeaa9fd065ff6cef2940be7
+PODFILE CHECKSUM: 0c97bbd719ccec38ade119d779cdeb170d9c5be7
 
 COCOAPODS: 1.11.2

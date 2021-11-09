@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Reusable
 
-class ThirdVCCollectionViewCell: UICollectionViewCell {
+class ThirdVCCollectionViewCell: UICollectionViewCell, NibReusable {
 
     @IBOutlet weak var imageViewOutlet: UIImageView!
     

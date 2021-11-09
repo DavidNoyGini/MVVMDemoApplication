@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let navVC = UINavigationController()
+    //    navVC.navigationBar.isTranslucent = false
         
-        let router = HomeRouter()
+        let router = MainRouter()
         router.navigationController = navVC
         
         window?.rootViewController = navVC

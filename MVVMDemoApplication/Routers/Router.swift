@@ -8,8 +8,10 @@
 import UIKit
 
 enum Event {
+    case toHome
     case toSecondVC
     case toThirdVC
+    case toFourthVC
 }
 
 protocol Router {
@@ -17,6 +19,7 @@ protocol Router {
     
     func eventOccurred(with type: Event)
     func start()
+    func remove(type: ViewModelType)
 }
 
 protocol Routing {

@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Reusable
 
-protocol NumberSelsctedDelegate: AnyObject {
-    func didSelectNumber(number: String?)
+protocol SearchDelegate: AnyObject {
+    func didSearch(search: String?,type: ViewModelType)
 }
 
 class SecondViewController: UIViewController, Routing {
@@ -19,9 +20,20 @@ class SecondViewController: UIViewController, Routing {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    private var dataSource: SecondDataSource = SecondDataSource()
-    weak var numberSelsctedDelegate: NumberSelsctedDelegate?
-    var choosenNumber: String?
+    private var dataSource: ViewModel
+    weak var searchDelegate: SearchDelegate?
+    var searchedString: String?
+    
+    init(dataSource: ViewModel) {
+        self.dataSource     = dataSource
+        if dataSource.type == .FourthVC {searchedString = nil}
+        super.init(nibName: "SecondViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +41,7 @@ class SecondViewController: UIViewController, Routing {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let number = choosenNumber {
+        if let number = searchedString {
             textField.text = number
             loadDataToTable(number: number)
         }
@@ -40,13 +52,14 @@ class SecondViewController: UIViewController, Routing {
     }
     
     private func setUpMethod(){
-        addNavigationItem()
-        tableView.register(UINib(nibName: "SecondVCTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+          tableView.register(cellType: SecondVCTableViewCell.self)
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = true
         goButtonOutlet.configuration?.attributedTitle?.font = .systemFont(ofSize: 15)
         goButtonOutlet.configuration?.titlePadding = 2
+        navigationItem.leftBarButtonItem?.image = UIImage(systemName: "arrow.backward")
     }
     
     private func numberCheck(){
@@ -58,8 +71,9 @@ class SecondViewController: UIViewController, Routing {
     
     private func loadDataToTable(number: String){
         if let count = Int(number) {
+            dataSource.cellModels = []
             dataSource.makeDataSource(number: count)
-            choosenNumber = number
+            searchedString = number
             view.backgroundColor = .systemTeal
             tableView.isHidden = false
             tableView.reloadData()
@@ -72,21 +86,12 @@ class SecondViewController: UIViewController, Routing {
     private func inValiedNuber(){
         view.backgroundColor = .red
         tableView.isHidden = true
-        choosenNumber = nil
+        searchedString = nil
     }
     
-    
-    private func addNavigationItem(){
-        navigationItem.leftBarButtonItem =
-        UIBarButtonItem(image: UIImage(systemName: "arrow.backward"),
-                        style: .plain,
-                        target: self,
-                        action: #selector(backToHome))
-    }
-    
-    @objc private func backToHome(){
-        numberSelsctedDelegate?.didSelectNumber(number: choosenNumber)
-        dismiss(animated: true, completion: nil)
+    private func backToHome(){
+        searchDelegate?.didSearch(search: searchedString, type: dataSource.type)
+        router?.remove(type: dataSource.type)
     }
     
 }
@@ -94,24 +99,27 @@ class SecondViewController: UIViewController, Routing {
 extension SecondViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataSource.cellNumbers.count
+        dataSource.cellModels.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellModel = dataSource.getCellModel(i: indexPath.row)
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SecondVCTableViewCell {
-            cell.configure(with: cellModel)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            return cell
-        }
-        
+        let cell = tableView.dequeueReusableCell(for: indexPath) as SecondVCTableViewCell
+        cell.configure(with: cellModel)
+
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch dataSource.type {
+        case .FourthVC:
+            let cellString = dataSource.getCellModel(i: indexPath.row)
+            searchedString = cellString.tappedString
+        default: break
+        }
         backToHome()
     }
     

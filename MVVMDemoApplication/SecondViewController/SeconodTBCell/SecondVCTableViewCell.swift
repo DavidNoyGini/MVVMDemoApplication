@@ -6,24 +6,14 @@
 //
 
 import UIKit
+import Reusable
 
-class SecondVCTableViewCell: UITableViewCell {
+class SecondVCTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet weak var textLabelOutlet: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
     func configure(with model: TableViewCellModel)
     {
-        self.textLabelOutlet.text = model.number
+        self.textLabelOutlet.text = model.tappedString
     }
 }

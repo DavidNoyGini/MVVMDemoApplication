@@ -6,12 +6,24 @@
 //
 
 import UIKit
+import Reusable
 
-class ThirdViewController: UIViewController {
-
+class ThirdViewController: UIViewController, Routing {
+    
+    var router: Router?
+    
     var choosenNumber: String?
     var thirdDataSource: [CollectionViewCellModel] = []
     @IBOutlet weak var collectionViewOutlet: UICollectionView!
+    
+    init(thirdDataSource: [CollectionViewCellModel]) {
+        self.thirdDataSource = thirdDataSource
+        super.init(nibName: "ThirdViewController", bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad()
     {
@@ -21,20 +33,11 @@ class ThirdViewController: UIViewController {
     
     private func setupMethod()
     {
-        addNavigationItem()
-        collectionViewOutlet.register(UINib(nibName: "ThirdVCCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "thirdCell")
+        collectionViewOutlet.register(cellType: ThirdVCCollectionViewCell.self)
+
         collectionViewOutlet.delegate = self
         collectionViewOutlet.dataSource = self
         setupLongGestureRecognizerOnCollection()
-    }
-
-    private func addNavigationItem()
-    {
-        navigationItem.leftBarButtonItem =
-        UIBarButtonItem(image: UIImage(systemName: "arrow.backward"),
-                        style: .plain,
-                        target: self,
-                        action: #selector(backToHome))
     }
     
     @objc private func backToHome()
@@ -48,7 +51,7 @@ extension ThirdViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-
+        router?.eventOccurred(with: .toFourthVC)
      }
 
     
@@ -62,17 +65,11 @@ extension ThirdViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         let collectionViewCellModel = thirdDataSource[indexPath.row]
         
-        if let cell = collectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "thirdCell", for: indexPath) as? ThirdVCCollectionViewCell
-        {
-            cell.configure(with: collectionViewCellModel)
-            return cell
-        }
-        else
-        {
-            let cell = collectionViewOutlet.dequeueReusableCell(withReuseIdentifier: "thirdCell", for: indexPath)
-            return cell
-        }
+        let cell = collectionViewOutlet.dequeueReusableCell(for: indexPath) as ThirdVCCollectionViewCell
         
+        cell.configure(with: collectionViewCellModel)
+        
+        return cell
     }
 
 }

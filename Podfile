@@ -8,5 +8,6 @@ target 'MVVMDemoApplication' do
   # Pods for MVVMDemoApplication
   
   pod 'EzImageLoader'
+  pod 'Reusable'
 
 end
