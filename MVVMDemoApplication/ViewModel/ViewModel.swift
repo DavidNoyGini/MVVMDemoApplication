@@ -10,7 +10,7 @@ import Foundation
 protocol ViewModel {
     var type: ViewModelType { get set }
     var cellModels: [TableViewCellModel] { get set }
-    func makeDataSource(number: Int)
+    func makeDataSource(tappedString: String, completion: @escaping () -> Void)
     func getCellModel(i: Int) -> TableViewCellModel
 }
 

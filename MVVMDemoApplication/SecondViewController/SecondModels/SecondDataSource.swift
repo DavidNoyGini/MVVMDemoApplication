@@ -12,12 +12,16 @@ class SecondDataSource: ViewModel {
     var type: ViewModelType = .secondVC
     var cellModels: [TableViewCellModel] = []
     
-    func makeDataSource(number: Int)
+    func makeDataSource(tappedString: String, completion: @escaping () -> Void)
     {
-        for index in 0..<number
+        if let number = Int(tappedString)
         {
-            cellModels.append(TableViewCellModel(tappedString: String(index)))
+            for index in 0..<number
+            {
+                cellModels.append(TableViewCellModel(tappedString: String(index)))
+            }
         }
+        completion()
     }
     
     func getCellModel(i: Int) -> TableViewCellModel {

@@ -17,6 +17,8 @@
 		3A333903273AA74000F8CBEE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A333902273AA74000F8CBEE /* City.swift */; };
 		3A333905273AA78A00F8CBEE /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A333904273AA78A00F8CBEE /* Cities.swift */; };
 		3A333907273AA7E300F8CBEE /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A333906273AA7E300F8CBEE /* APIResult.swift */; };
+		3A333909273AAA9F00F8CBEE /* FourthAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A333908273AAA9F00F8CBEE /* FourthAPIManager.swift */; };
+		3A33390B273AC0F600F8CBEE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33390A273AC0F600F8CBEE /* StringExtension.swift */; };
 		3AB211CE2733DF2100A43B96 /* SecondVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB211CC2733DF2100A43B96 /* SecondVCTableViewCell.swift */; };
 		3AB211CF2733DF2100A43B96 /* SecondVCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB211CD2733DF2100A43B96 /* SecondVCTableViewCell.xib */; };
 		3AB98FAD2737BB38000B8531 /* SecondDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */; };
@@ -48,6 +50,8 @@
 		3A333902273AA74000F8CBEE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		3A333904273AA78A00F8CBEE /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		3A333906273AA7E300F8CBEE /* APIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
+		3A333908273AAA9F00F8CBEE /* FourthAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthAPIManager.swift; sourceTree = "<group>"; };
+		3A33390A273AC0F600F8CBEE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		3AB211CC2733DF2100A43B96 /* SecondVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVCTableViewCell.swift; sourceTree = "<group>"; };
 		3AB211CD2733DF2100A43B96 /* SecondVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondVCTableViewCell.xib; sourceTree = "<group>"; };
 		3AB98FAC2737BB38000B8531 /* SecondDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDataSource.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 				3A333902273AA74000F8CBEE /* City.swift */,
 				3A333904273AA78A00F8CBEE /* Cities.swift */,
 				3A333906273AA7E300F8CBEE /* APIResult.swift */,
+				3A333908273AAA9F00F8CBEE /* FourthAPIManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 			children = (
 				3AB98FB92737F142000B8531 /* CGFlaotExtension.swift */,
 				3AB98FBB2737F17F000B8531 /* UIExtension.swift */,
+				3A33390A273AC0F600F8CBEE /* StringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				3AB98FAD2737BB38000B8531 /* SecondDataSource.swift in Sources */,
 				3AB98FC62738016C000B8531 /* ThirdDataSource.swift in Sources */,
 				3A3338FA27392E6100F8CBEE /* Router.swift in Sources */,
+				3A333909273AAA9F00F8CBEE /* FourthAPIManager.swift in Sources */,
 				3AB98FAF2737BB52000B8531 /* TableViewCellModel.swift in Sources */,
 				3AB98FBE2737F87F000B8531 /* PicsumManager.swift in Sources */,
 				3A333907273AA7E300F8CBEE /* APIResult.swift in Sources */,
@@ -400,6 +407,7 @@
 				3A333905273AA78A00F8CBEE /* Cities.swift in Sources */,
 				3A333900273A7A8E00F8CBEE /* FourthDataSource.swift in Sources */,
 				3A333903273AA74000F8CBEE /* City.swift in Sources */,
+				3A33390B273AC0F600F8CBEE /* StringExtension.swift in Sources */,
 				3AB98FBA2737F142000B8531 /* CGFlaotExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

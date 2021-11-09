@@ -43,7 +43,7 @@ class SecondViewController: UIViewController, Routing {
     override func viewDidAppear(_ animated: Bool) {
         if let number = searchedString {
             textField.text = number
-            loadDataToTable(number: number)
+            loadDataToTable(tappedString: number)
         }
     }
     
@@ -64,23 +64,36 @@ class SecondViewController: UIViewController, Routing {
     
     private func numberCheck(){
         guard textField.text != nil,
-              let number = textField.text else {return}
-        loadDataToTable(number: number)
+              let tappedString = textField.text else {return}
+        loadDataToTable(tappedString: tappedString)
         
     }
     
-    private func loadDataToTable(number: String){
-        if let count = Int(number) {
-            dataSource.cellModels = []
-            dataSource.makeDataSource(number: count)
-            searchedString = number
-            view.backgroundColor = .systemTeal
-            tableView.isHidden = false
-            tableView.reloadData()
-            tableView.isHidden = false
-        } else {
-            inValiedNuber()
+    private func loadDataToTable(tappedString: String){
+        
+        
+        if dataSource.type == .secondVC
+        {
+            guard Int(tappedString) != nil else
+            {
+                inValiedNuber()
+                return
+            }
         }
+        
+        dataSource.cellModels = []
+        dataSource.makeDataSource(tappedString: tappedString)
+        {
+            DispatchQueue.main.async
+            {[weak self] in
+                self?.searchedString = tappedString
+                self?.view.backgroundColor = .systemTeal
+                self?.tableView.isHidden = false
+                self?.tableView.reloadData()
+                self?.tableView.isHidden = false
+            }
+        }
+
     }
     
     private func inValiedNuber(){
