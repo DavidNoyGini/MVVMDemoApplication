@@ -8,11 +8,6 @@
 import Foundation
 
 struct StringsConstans {
-    
     static let startButtonTitle = "Start!"
-    static let dataPasssedButtonTitle = "Data passed!"
     static let picsumBaseUrl = "https://picsum.photos/200/?random="
-    static let thirdVCCollectionViewCell = "ThirdVCCollectionViewCell"
-    static let thirdCell = "thirdCell"
-    
 }

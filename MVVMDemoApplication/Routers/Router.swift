@@ -8,20 +8,21 @@
 import UIKit
 
 enum Event {
-    case toHome
-    case toSecondVC
-    case toThirdVC
-    case toFourthVC
+    case toHome(startButton: String? = "Start!", dataPassedButton: String? = "Data passed!")
+    case toSecondVC(text: String?)
+    case toThirdVC(text: String?)
+    case toFourthVC(text: String?)
 }
 
 protocol Router {
+    
     var navigationController: UINavigationController? { get set }
     
-    func eventOccurred(with type: Event)
+    func moveTo(with type: Event)
     func start()
-    func remove(type: ViewModelType)
 }
 
 protocol Routing {
     var router: Router? { get set }
 }
+

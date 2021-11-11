@@ -1,5 +1,5 @@
 //
-//  ThirdViewController.swift
+//  ThirdVC.swift
 //  MVVMDemoApplication
 //
 //  Created by David Noy on 07/11/2021.
@@ -8,17 +8,17 @@
 import UIKit
 import Reusable
 
-class ThirdViewController: UIViewController, Routing {
-    
-    var router: Router?
-    
+class ThirdVC: UIViewController {
+        
     var choosenNumber: String?
     var thirdDataSource: [CollectionViewCellModel] = []
+    var viewModel: ThirdVM
     @IBOutlet weak var collectionViewOutlet: UICollectionView!
     
-    init(thirdDataSource: [CollectionViewCellModel]) {
+    init(thirdDataSource: [CollectionViewCellModel], viewModel: ThirdVM) {
         self.thirdDataSource = thirdDataSource
-        super.init(nibName: "ThirdViewController", bundle: nil)
+        self.viewModel = viewModel
+        super.init(nibName: "ThirdVC", bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -47,13 +47,13 @@ class ThirdViewController: UIViewController, Routing {
     
 }
 
-extension ThirdViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ThirdVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
-     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        router?.eventOccurred(with: .toFourthVC)
-     }
-
+        viewModel.userDidSelectItemAt(indexPath: indexPath)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
@@ -74,7 +74,7 @@ extension ThirdViewController: UICollectionViewDelegate, UICollectionViewDataSou
 
 }
 
-extension ThirdViewController: UIGestureRecognizerDelegate{
+extension ThirdVC: UIGestureRecognizerDelegate{
     
     private func setupLongGestureRecognizerOnCollection() {
         let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
@@ -89,9 +89,9 @@ extension ThirdViewController: UIGestureRecognizerDelegate{
             return
         }
 
-        let p = gestureRecognizer.location(in: collectionViewOutlet)
+        let point = gestureRecognizer.location(in: collectionViewOutlet)
 
-        if let indexPath = collectionViewOutlet?.indexPathForItem(at: p) {
+        if let indexPath = collectionViewOutlet?.indexPathForItem(at: point) {
             collectionViewOutlet.deleteItems(at: [indexPath])
             thirdDataSource.remove(at: indexPath.item)
             self.view.layoutIfNeeded()
@@ -99,7 +99,7 @@ extension ThirdViewController: UIGestureRecognizerDelegate{
     }
 }
 
-extension ThirdViewController: UICollectionViewDelegateFlowLayout {
+extension ThirdVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionViewOutlet.frame.size.width / 2, height: collectionViewOutlet.frame.size.width / 2)

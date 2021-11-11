@@ -7,12 +7,18 @@
 
 import UIKit
 
-struct CollectionViewCellModel {
+class CollectionViewCellModel {
     var image: UIImage?
     
-    init(){
+    init()
+    {
+        getImage()
+    }
+    
+    private func getImage()
+    {
         let i = Int.random(in: 1...100_000)
-        if let fetchedImage = PicsumManager.getImage(url: "\(StringsConstans.picsumBaseUrl)\(i)") {
+        if let fetchedImage = PicsumService.getImage(url: "\(StringsConstans.picsumBaseUrl)\(i)") {
             self.image = fetchedImage
         }
     }

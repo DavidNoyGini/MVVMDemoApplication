@@ -10,68 +10,58 @@ import UIKit
 class MainRouter: Router {
     var navigationController: UINavigationController?
     
-    func eventOccurred(with type: Event)
+    func moveTo(with type: Event)
     {
-
         switch type
         {
-        case .toHome:
-            print("to Home")
-        case .toSecondVC:
-            moveToSecondVC()
-        case .toThirdVC:
-            moveToThirdVC()
-        case .toFourthVC:
-            moveToFourthVC()
+        case .toHome(let start, let passed):
+            moveToHomeVC(startButton: start, dataPassed: passed)
+        case .toSecondVC(let text):
+            moveToSecondVC(text: text)
+        case .toThirdVC(let text):
+            moveToThirdVC(text: text)
+        case .toFourthVC(let text):
+            moveToFourthVC(text: text)
         }
-        
         
     }
     
     func start()
     {
-        let vc = HomeViewController()
-        vc.router = self
+        let vc = FirstVC(viewModel: FirstVM(router: self))
         navigationController?.setViewControllers([vc], animated: false)
     }
     
-    func remove(type: ViewModelType)
+    private func moveToHomeVC(startButton: String?,dataPassed: String?)
     {
-        switch type
-        {
-        case .FourthVC:
-            navigationController?.popToRootViewController(animated: true)
-        default:
-            navigationController?.popViewController(animated: true)
-        }
-        
+        guard let firsVC = navigationController?.viewControllers.first(where: { $0 is FirstVC }) as? FirstVC else { return }
+        firsVC.startButton.setTitle(startButton, for: .normal)
+        firsVC.setPassedDataTitle(dataPassed: dataPassed)
+        firsVC.text = startButton
+        navigationController?.popToViewController(firsVC, animated: true)
     }
     
-    private func moveToSecondVC()
+    private func moveToSecondVC(text: String?)
     {
-        guard let homeVC = navigationController?.viewControllers[0] as? HomeViewController else { return }
-        let vc = SecondViewController(dataSource: SecondDataSource())
-        vc.router = self
-        vc.searchedString = homeVC.searchedString
-        vc.searchDelegate = homeVC
+        let secondVM = SecondVM(text: text, router: self)
+        let vc = SecondVC(viewModel: secondVM)
+        secondVM.tableScreenVMDelegate = vc
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func moveToThirdVC()
+    private func moveToThirdVC(text: String?)
     {
-        guard let homeVC = navigationController?.viewControllers[0] as? HomeViewController else { return }
-        let thirdDataSource = ThirdDataSource().makeDataSource(number: homeVC.searchedString)
-        let vc = ThirdViewController(thirdDataSource: thirdDataSource)
-        vc.router = self
+        let viewModel = ThirdVM(router: self)
+        let thirdDataSource = viewModel.makeDataSource(number: text)
+        let vc = ThirdVC(thirdDataSource: thirdDataSource, viewModel: viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    private func moveToFourthVC()
+    private func moveToFourthVC(text: String?)
     {
-        guard let homeVC = navigationController?.viewControllers[0] as? HomeViewController else { return }
-        let vc = SecondViewController(dataSource: FourthDataSource())
-        vc.router = self
-        vc.searchDelegate = homeVC
+        let fourthMV = FourthVM(router: self, text: text)
+        let vc = SecondVC(viewModel: fourthMV)
+        fourthMV.tableScreenVMDelegate = vc
         navigationController?.pushViewController(vc, animated: true)
     }
 }

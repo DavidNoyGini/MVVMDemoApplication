@@ -14,6 +14,6 @@ class SecondVCTableViewCell: UITableViewCell, NibReusable {
     
     func configure(with model: TableViewCellModel)
     {
-        self.textLabelOutlet.text = model.tappedString
+        self.textLabelOutlet.text = model.text
     }
 }

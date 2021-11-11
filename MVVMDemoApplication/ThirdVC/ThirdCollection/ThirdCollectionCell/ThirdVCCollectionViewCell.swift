@@ -12,11 +12,6 @@ class ThirdVCCollectionViewCell: UICollectionViewCell, NibReusable {
 
     @IBOutlet weak var imageViewOutlet: UIImageView!
     
-    override func awakeFromNib()
-    {
-        super.awakeFromNib()
-    }
-    
     func configure(with model: CollectionViewCellModel)
     {
         imageViewOutlet.image = model.image

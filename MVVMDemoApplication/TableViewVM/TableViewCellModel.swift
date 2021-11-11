@@ -8,5 +8,5 @@
 import Foundation
 
 struct TableViewCellModel {
-    let tappedString: String
+    let text: String
 }
