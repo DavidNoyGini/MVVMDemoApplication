@@ -9,7 +9,7 @@ import UIKit
 import Reusable
 
 class SecondVC: UIViewController {
-        
+    
     @IBOutlet weak var goButtonOutlet: UIButton!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -28,6 +28,7 @@ class SecondVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - lifecycle & setup
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -37,6 +38,18 @@ class SecondVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         checkVM()
     }
+    
+    private func setUpMethod()
+    {
+        tableView.register(cellType: SecondVCTableViewCell.self)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isHidden = true
+        
+        goButtonOutlet.configuration?.attributedTitle?.font = .systemFont(ofSize: 15)
+        goButtonOutlet.configuration?.titlePadding = 2
+    }
+    
     
     private func checkVM()
     {
@@ -53,40 +66,30 @@ class SecondVC: UIViewController {
             }
         }
     }
-
     
+    // MARK: - @IBAction
     @IBAction func goButton(_ sender: UIButton)
     {
-       // numberCheck()
+        // numberCheck()
         viewModel.goButtonTapped(text: textField.text)
     }
-        
-    private func setUpMethod()
-    {
-        tableView.register(cellType: SecondVCTableViewCell.self)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.isHidden = true
-        
-        goButtonOutlet.configuration?.attributedTitle?.font = .systemFont(ofSize: 15)
-        goButtonOutlet.configuration?.titlePadding = 2
-    }
+    
 }
 
+// MARK: - TableView Methods
 extension SecondVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        viewModel.numberOfItemInSection(section: section)
+        return viewModel.numberOfItemInSection(section: section)
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(for: indexPath) as SecondVCTableViewCell
         guard let cellModel = viewModel.getCellVM(indexPath: indexPath) else {return cell}
         cell.configure(with: cellModel)
-
+        
         return cell
     }
     
@@ -96,6 +99,8 @@ extension SecondVC: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+//MARK: - TableScreenVMDelegate
 
 extension SecondVC: TableScreenVMDelegate {
     func reloadDataFromVM()
@@ -116,12 +121,12 @@ extension SecondVC: TableScreenVMDelegate {
     
     private func loadDataToTable()
     {
-            DispatchQueue.main.async
-            { [weak self] in
-                self?.view.backgroundColor = .systemTeal
-                self?.tableView.reloadData()
-                self?.tableView.isHidden = false
-            }
+        DispatchQueue.main.async
+        { [weak self] in
+            self?.view.backgroundColor = .systemTeal
+            self?.tableView.reloadData()
+            self?.tableView.isHidden = false
+        }
     }
     
     private func createAlert(title: String, message: String)

@@ -19,21 +19,22 @@ class ThirdVM: Routing {
     }
     
     func makeDataSource(number: String?) -> [CollectionViewCellModel]
-       {
-           text = number
-           guard let stringNumber = number,
-                 let intNumber = Int(stringNumber) else {return []}
-           
-           for _ in 0..<intNumber
-           {
-               thirdDataSource.append(CollectionViewCellModel())
-           }
-           return thirdDataSource
-       }
-   
-   func getCellModel(i: Int) -> CollectionViewCellModel {
-       return thirdDataSource[i]
-   }
+    {
+        text = number
+        guard let stringNumber = number,
+              let intNumber = Int(stringNumber) else {return []}
+        
+        for _ in 0..<intNumber
+        {
+            thirdDataSource.append(CollectionViewCellModel())
+        }
+        return thirdDataSource
+    }
+    
+    func getCellModel(i: Int) -> CollectionViewCellModel
+    {
+        return thirdDataSource[i]
+    }
     
     func userDidSelectItemAt(indexPath: IndexPath)
     {

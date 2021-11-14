@@ -59,8 +59,9 @@ class FourthVM: TableScreenVM, Routing {
         }
     }
     
-    func userDidEnterText(text: String) {
-        
+    func userDidEnterText(text: String)
+    {
+        // Nothing here yet
     }
     
     func numberOfItemInSection(section: Int) -> Int
@@ -68,11 +69,13 @@ class FourthVM: TableScreenVM, Routing {
         return cellModels.count
     }
     
-    func getCellVM(indexPath: IndexPath) -> TableViewCellModel? {
+    func getCellVM(indexPath: IndexPath) -> TableViewCellModel?
+    {
         return cellModels[indexPath.row]
     }
     
-    func userDidSelectRowAt(indexPath: IndexPath) {
+    func userDidSelectRowAt(indexPath: IndexPath)
+    {
          let city = cellModels[indexPath.row].text
          router?.moveTo(with: .toHome(startButton: text, dataPassedButton: city))
     }

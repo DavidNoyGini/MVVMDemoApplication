@@ -23,7 +23,6 @@ class MainRouter: Router {
         case .toFourthVC(let text):
             moveToFourthVC(text: text)
         }
-        
     }
     
     func start()

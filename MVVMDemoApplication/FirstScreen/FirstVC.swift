@@ -28,6 +28,7 @@ class FirstVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - lifecycle & setup
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -51,6 +52,12 @@ class FirstVC: UIViewController {
         dataPassedButton.configuration?.baseForegroundColor = .black
     }
     
+    func setPassedDataTitle(dataPassed: String?)
+    {
+        animateButtonText(dataPassed: dataPassed)
+    }
+
+    // MARK: - @IBAction
     @IBAction func startTapped(_ sender: UIButton)
     {
         viewModel.startTapped(text: text)
@@ -61,15 +68,10 @@ class FirstVC: UIViewController {
       //  router?.moveTo(with: .toThirdVC, text: text, searchDelegate: self)
         viewModel.dataPassedTapped(text: text)
     }
-    
-    func setPassedDataTitle(dataPassed: String?)
-    {
-        animateButtonText(dataPassed: dataPassed)
-    }
 
 }
 
-  
+// MARK: Touches
 extension FirstVC {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -85,8 +87,6 @@ extension FirstVC {
         }
     }
     
-
-    
     func animateButtonText(dataPassed: String?)
     {
         dataPassedButton.setTitle(dataPassed, for: .normal)
@@ -98,9 +98,8 @@ extension FirstVC {
         { [weak self] in
             self?.dataPassedButton.titleLabel?.alpha = 0.3
         }
-
+        
     }
-    
 }
 
 

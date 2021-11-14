@@ -9,13 +9,13 @@ import Foundation
 
 extension String
 {
-    
     var isInt: Bool
     {
         return Int(self) != nil
     }
-
-    var toCharArray: [Character] {
+    
+    var toCharArray: [Character]
+    {
         return Array(self)
     }
     

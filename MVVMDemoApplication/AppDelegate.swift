@@ -9,20 +9,20 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
         launchInitialScreen()
         return true
     }
     
-    private func launchInitialScreen(){
+    private func launchInitialScreen()
+    {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         let navVC = UINavigationController()
-    //    navVC.navigationBar.isTranslucent = false
         
         let router = MainRouter()
         router.navigationController = navVC
@@ -32,6 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         router.start()
     }
-
+    
 }
 

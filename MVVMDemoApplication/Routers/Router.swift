@@ -15,9 +15,7 @@ enum Event {
 }
 
 protocol Router {
-    
     var navigationController: UINavigationController? { get set }
-    
     func moveTo(with type: Event)
     func start()
 }
