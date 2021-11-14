@@ -27,20 +27,20 @@ class ThirdVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+// MARK: - lifecycle & setup
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        setupMethod()
+        setupCollectionView()
+        setupLongGestureRecognizerOnCollection()
     }
     
-    private func setupMethod()
+    private func setupCollectionView()
     {
         collectionViewOutlet.register(cellType: ThirdVCCollectionViewCell.self)
         collectionViewOutlet.delegate = self
         collectionViewOutlet.dataSource = self
-        setupLongGestureRecognizerOnCollection()
     }
-    
 }
 
 // MARK: - UICollectionView Methods

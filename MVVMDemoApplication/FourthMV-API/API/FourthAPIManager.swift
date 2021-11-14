@@ -12,7 +12,7 @@ struct FourthAPIManager {
     private static let baseUrl = "https://data.gov.il/api/3/action/datastore_search"
     private static let resource_id = "5c78e9fa-c2e2-4771-93ff-7f400a12f7ba"
     
-    static func fetchCities(citiesString: String, completion: @escaping (([String]?, APIState) -> Void))
+    static func fetchCities(citiesString: String, completion: @escaping (([String]?, StateAndErrors) -> Void))
     {        
         let queryItem = [URLQueryItem(name: "resource_id", value: resource_id), URLQueryItem(name: "q", value: citiesString)]
         guard var urlComponents = URLComponents(string: baseUrl) else {return}
@@ -61,16 +61,6 @@ struct FourthAPIManager {
         return citiesStringArray.filter {$0.contains(text)}
     }
     
-}
-
-enum APIState: String {
-    case inValidInput = "In Valid Input"
-    case urlEror = "URL Error"
-    case noData = "No Data"
-    case sessionError = "Session Error"
-    case noConnection = "No Connection"
-    case cantDecode = "Can't Decode"
-    case success = "Success"
 }
 
 

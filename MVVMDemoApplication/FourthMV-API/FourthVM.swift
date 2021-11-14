@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FourthVM: TableScreenVM, Routing {
+class FourthVM: Routing {
 
     var router: Router?
     var text: String?
@@ -52,12 +52,16 @@ class FourthVM: TableScreenVM, Routing {
     {
         if cellModels.isEmpty
         {
-            tableScreenVMDelegate?.showErrorAlert(errorType: .invalidInput)
+            tableScreenVMDelegate?.showErrorAlert(errorType: .inValidInput)
         } else
         {
             tableScreenVMDelegate?.reloadDataFromVM()
         }
     }
+}
+
+// MARK: - TableScreenVM Protocol
+extension FourthVM: TableScreenVM {
     
     func userDidEnterText(text: String)
     {
@@ -83,9 +87,9 @@ class FourthVM: TableScreenVM, Routing {
     func makeDataSource(text: String, completion: @escaping () -> Void)
     {
         FourthAPIManager.fetchCities(citiesString: text)
-        { [weak self] citiesResult, apiState in
+        { [weak self] citiesResult, statAndErrors in
             
-            switch apiState
+            switch statAndErrors
             {
             case .success:
                 guard citiesResult != nil,
@@ -99,7 +103,7 @@ class FourthVM: TableScreenVM, Routing {
                 }
                 completion()
             default:
-                print(apiState.rawValue)
+                self?.tableScreenVMDelegate?.showErrorAlert(errorType: statAndErrors)
                 return
             }
         }

@@ -28,14 +28,14 @@ class FirstVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - lifecycle & setup
+// MARK: - lifecycle & setup
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        setUpMethod()
+        setupButtons()
     }
     
-    private func setUpMethod()
+    private func setupButtons()
     {
         startButton.configuration?.title = StringsConstans.startButtonTitle
         startButton.configuration?.baseBackgroundColor = .systemYellow
@@ -58,12 +58,12 @@ class FirstVC: UIViewController {
     }
 
     // MARK: - @IBAction
-    @IBAction func startTapped(_ sender: UIButton)
+    @IBAction private func startTapped(_ sender: UIButton)
     {
         viewModel.startTapped(text: text)
     }
     
-    @IBAction func dataPassedTapped(_ sender: UIButton)
+    @IBAction private func dataPassedTapped(_ sender: UIButton)
     {
       //  router?.moveTo(with: .toThirdVC, text: text, searchDelegate: self)
         viewModel.dataPassedTapped(text: text)

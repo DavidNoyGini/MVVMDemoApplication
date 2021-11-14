@@ -28,28 +28,31 @@ class SecondVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - lifecycle & setup
+// MARK: - lifecycle & setup
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        setUpMethod()
+        setupTableView()
+        setupGoButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         checkVM()
     }
     
-    private func setUpMethod()
+    private func setupTableView()
     {
         tableView.register(cellType: SecondVCTableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = true
-        
+    }
+    
+    private func setupGoButton()
+    {
         goButtonOutlet.configuration?.attributedTitle?.font = .systemFont(ofSize: 15)
         goButtonOutlet.configuration?.titlePadding = 2
     }
-    
     
     private func checkVM()
     {
@@ -68,7 +71,7 @@ class SecondVC: UIViewController {
     }
     
     // MARK: - @IBAction
-    @IBAction func goButton(_ sender: UIButton)
+    @IBAction private func goButton(_ sender: UIButton)
     {
         // numberCheck()
         viewModel.goButtonTapped(text: textField.text)
@@ -108,7 +111,7 @@ extension SecondVC: TableScreenVMDelegate {
         loadDataToTable()
     }
     
-    func showErrorAlert(errorType: TableScreenVMError)
+    func showErrorAlert(errorType: StateAndErrors)
     {
         DispatchQueue.main.async { [weak self] in
             self?.view.backgroundColor = .red
