@@ -15,7 +15,7 @@ protocol SecondVMTableScreenProtocol: TableScreenVM
 class SecondVM: SecondVMTableScreenProtocol, Routing {
     
     var router: Router?
-    var cellModels: [TableViewCellModel] = []
+    private var cellModels: [TableViewCellModel] = []
     weak var tableScreenVMDelegate: TableScreenVMDelegate?
     
     var text: String?
@@ -30,7 +30,7 @@ class SecondVM: SecondVMTableScreenProtocol, Routing {
     {
         guard let text = text, let number = Int(text) else {return}
         self.text = text
-        makeDataSource(number: number)
+        makeCellViewModels(number: number)
         if !cellModels.isEmpty
         {
             tableScreenVMDelegate?.reloadDataFromVM()
@@ -43,7 +43,7 @@ class SecondVM: SecondVMTableScreenProtocol, Routing {
         cellModels = []
         if let number = checkNumber(text: text)
         {
-            makeDataSource(number: number)
+            makeCellViewModels(number: number)
             self.text = text
         }
         
@@ -70,7 +70,7 @@ class SecondVM: SecondVMTableScreenProtocol, Routing {
     
     func userDidSelectRowAt(indexPath: IndexPath)
     {
-        router?.moveTo(with: .toHome(startButton: text))
+        router?.navigate(to: .firstVC(startButtonTitle: text))
     }
     
     private func checkNumber(text: String?) -> Int?
@@ -91,7 +91,7 @@ class SecondVM: SecondVMTableScreenProtocol, Routing {
         return nil
     }
     
-    private func makeDataSource(number: Int)
+    private func makeCellViewModels(number: Int)
     {
         for index in 0..<number
         {

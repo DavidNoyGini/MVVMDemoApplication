@@ -10,12 +10,12 @@ import Reusable
 
 class SecondVC: UIViewController {
     
-    @IBOutlet weak var goButtonOutlet: UIButton!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var goButtonOutlet: UIButton!
+    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var tableView: UITableView!
     
     private var viewModel: TableScreenVM
-    var text: String?
+    private var text: String?
     
     init(viewModel: TableScreenVM)
     {
@@ -70,7 +70,7 @@ class SecondVC: UIViewController {
         }
     }
     
-    // MARK: - @IBAction
+// MARK: - @IBAction
     @IBAction private func goButton(_ sender: UIButton)
     {
         // numberCheck()

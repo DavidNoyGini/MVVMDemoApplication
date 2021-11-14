@@ -15,6 +15,8 @@ class FirstVC: UIViewController {
     var text: String?
     var viewModel: FirstVM
     
+    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+    
     private var tapIsUnable: Bool = false
     private var tapCount: Int = 0
     
@@ -71,7 +73,7 @@ class FirstVC: UIViewController {
 
 }
 
-// MARK: Touches
+// MARK: - Touches
 extension FirstVC {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -96,10 +98,39 @@ extension FirstVC {
                        delay: 0.5,
                        options: [.autoreverse,.repeat])
         { [weak self] in
-            self?.dataPassedButton.titleLabel?.alpha = 0.3
+            guard let self = self else {return}
+            self.dataPassedButton.titleLabel?.alpha = 0.3
         }
         
     }
 }
 
 
+// MARK: - FirstVMActivityIndicator
+extension FirstVC: FirstVMActivityIndicator {
+    func showActivityIndicator()
+    {
+        activityIndicator.center = view.center
+        activityIndicator.style = .large
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .red
+        activityIndicator.backgroundColor = .systemTeal
+        activityIndicator.layer.cornerRadius = 10
+        view.addSubview(self.activityIndicator)
+        
+        DispatchQueue.main.async
+        { [weak self] in
+            guard let self = self else {return}
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    func dismissActivityIndicator()
+    {
+        DispatchQueue.main.async
+        {[weak self] in
+            guard let self = self else {return}
+            self.activityIndicator.stopAnimating()
+        }
+    }
+}

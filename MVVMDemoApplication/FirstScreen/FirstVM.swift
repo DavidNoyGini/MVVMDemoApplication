@@ -7,9 +7,15 @@
 
 import Foundation
 
+protocol FirstVMActivityIndicator: AnyObject {
+    func showActivityIndicator()
+    func dismissActivityIndicator()
+}
+
 class FirstVM: Routing {
     
     var router: Router?
+    weak var firstVMActivityIndicatorDelegate: FirstVMActivityIndicator?
     
     init(router: Router)
     {
@@ -18,12 +24,25 @@ class FirstVM: Routing {
     
     func startTapped(text: String?)
     {
-        router?.moveTo(with: .toSecondVC(text: text))
+        router?.navigate(to: .secondVC(text: text))
     }
     
     func dataPassedTapped(text: String?)
     {
-        router?.moveTo(with: .toThirdVC(text: text))
+        router?.navigate(to: .thirdVC(text: text))
     }
-        
+}
+
+extension FirstVM: ThirdVCActivityIndicator {
+    func setActivityIndicatorVisibility(isVisible : Bool)
+    {
+        if isVisible
+        {
+            firstVMActivityIndicatorDelegate?.showActivityIndicator()
+        } else
+        {
+            firstVMActivityIndicatorDelegate?.dismissActivityIndicator()
+        }
+    }
+    
 }

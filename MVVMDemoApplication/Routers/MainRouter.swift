@@ -10,24 +10,26 @@ import UIKit
 class MainRouter: Router {
     var navigationController: UINavigationController?
     
-    func moveTo(with type: Event)
+    func navigate(to type: Event)
     {
         switch type
         {
-        case .toHome(let start, let passed):
+        case .firstVC(let start, let passed):
             moveToHomeVC(startButton: start, dataPassed: passed)
-        case .toSecondVC(let text):
+        case .secondVC(let text):
             moveToSecondVC(text: text)
-        case .toThirdVC(let text):
+        case .thirdVC(let text):
             moveToThirdVC(text: text)
-        case .toFourthVC(let text):
+        case .fourthVC(let text):
             moveToFourthVC(text: text)
         }
     }
     
     func start()
     {
-        let vc = FirstVC(viewModel: FirstVM(router: self))
+        let firstVM = FirstVM(router: self)
+        let vc = FirstVC(viewModel: firstVM)
+        firstVM.firstVMActivityIndicatorDelegate = vc
         navigationController?.setViewControllers([vc], animated: false)
     }
     
@@ -50,12 +52,13 @@ class MainRouter: Router {
     
     private func moveToThirdVC(text: String?)
     {
-        let viewModel = ThirdVM(router: self)
-        let thirdDataSource = viewModel.makeDataSource(number: text)
-        let vc = ThirdVC(thirdDataSource: thirdDataSource, viewModel: viewModel)
+        guard let firsVC = navigationController?.viewControllers.first(where: { $0 is FirstVC }) as? FirstVC else { return }
+        let viewModel = ThirdVM(router: self, number: text, delegate: firsVC.viewModel)
+      //  viewModel.thirdVCActivityIndicatorDelegate = firsVC.viewModel
+        let vc = ThirdVC(viewModel: viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+     
     private func moveToFourthVC(text: String?)
     {
         let fourthMV = FourthVM(router: self, text: text)

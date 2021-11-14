@@ -7,37 +7,60 @@
 
 import UIKit
 
+protocol ThirdVCActivityIndicator: AnyObject {
+    func setActivityIndicatorVisibility(isVisible: Bool)
+}
+
 class ThirdVM: Routing {
     
     var router: Router?
     var text: String?
-    private var thirdDataSource: [CollectionViewCellModel] = []
+    var thirdCellViewModels: [CollectionViewCellModel] = []
+    weak var thirdVCActivityIndicatorDelegate: ThirdVCActivityIndicator?
     
-    init(router: Router?)
+    init(router: Router?, number: String?, delegate: ThirdVCActivityIndicator)
     {
         self.router = router
+        thirdVCActivityIndicatorDelegate = delegate
+        loadCollectionViewCellModel(number: number)
     }
     
-    func makeDataSource(number: String?) -> [CollectionViewCellModel]
+    private func loadCollectionViewCellModel(number: String?)
     {
+        thirdCellViewModels = makeCellViewModels(number: number)
+        { [weak self] in
+            guard let self = self else {return}
+            self.thirdVCActivityIndicatorDelegate?.setActivityIndicatorVisibility(isVisible: false)
+        }
+    }
+    
+    func makeCellViewModels(number: String?, comletion: @escaping (() -> Void)) -> [CollectionViewCellModel]
+    {
+        thirdVCActivityIndicatorDelegate?.setActivityIndicatorVisibility(isVisible: true)
         text = number
         guard let stringNumber = number,
               let intNumber = Int(stringNumber) else {return []}
         
         for _ in 0..<intNumber
         {
-            thirdDataSource.append(CollectionViewCellModel())
+            thirdCellViewModels.append(CollectionViewCellModel())
         }
-        return thirdDataSource
+        comletion()
+        return thirdCellViewModels
     }
     
-    func getCellModel(i: Int) -> CollectionViewCellModel
+    func getCellModel(indexPath: IndexPath) -> CollectionViewCellModel
     {
-        return thirdDataSource[i]
+        return thirdCellViewModels[indexPath.row]
     }
     
     func userDidSelectItemAt(indexPath: IndexPath)
     {
-        router?.moveTo(with: .toFourthVC(text: text))
+        router?.navigate(to: .fourthVC(text: text))
+    }
+    
+    func getNumberOfItemsInSection(numberOfItemsInSection section: Int) -> Int
+    {
+        return thirdCellViewModels.count
     }
 }

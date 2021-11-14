@@ -8,15 +8,15 @@
 import UIKit
 
 enum Event {
-    case toHome(startButton: String? = "Start!", dataPassedButton: String? = "Data passed!")
-    case toSecondVC(text: String?)
-    case toThirdVC(text: String?)
-    case toFourthVC(text: String?)
+    case firstVC(startButtonTitle: String? = "Start!", dataPassedButtonTitle: String? = "Data passed!")
+    case secondVC(text: String?)
+    case thirdVC(text: String?)
+    case fourthVC(text: String?)
 }
 
 protocol Router {
     var navigationController: UINavigationController? { get set }
-    func moveTo(with type: Event)
+    func navigate(to type: Event)
     func start()
 }
 

@@ -10,8 +10,8 @@ import Foundation
 class FourthVM: Routing {
 
     var router: Router?
-    var text: String?
-    var cellModels: [TableViewCellModel] = []
+    private var text: String?
+    private var cellModels: [TableViewCellModel] = []
     weak var tableScreenVMDelegate: TableScreenVMDelegate?
     
     init(router: Router, text: String?)
@@ -41,7 +41,7 @@ class FourthVM: Routing {
             return
         }
         
-        makeDataSource(text: text)
+        makeCellViewModels(text: text)
         { [weak self] in
             self?.reloadData()
         }
@@ -81,10 +81,10 @@ extension FourthVM: TableScreenVM {
     func userDidSelectRowAt(indexPath: IndexPath)
     {
          let city = cellModels[indexPath.row].text
-         router?.moveTo(with: .toHome(startButton: text, dataPassedButton: city))
+         router?.navigate(to: .firstVC(startButtonTitle: text, dataPassedButtonTitle: city))
     }
     
-    func makeDataSource(text: String, completion: @escaping () -> Void)
+    func makeCellViewModels(text: String, completion: @escaping () -> Void)
     {
         FourthAPIManager.fetchCities(citiesString: text)
         { [weak self] citiesResult, statAndErrors in

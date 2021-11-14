@@ -11,13 +11,11 @@ import Reusable
 class ThirdVC: UIViewController {
         
     var choosenNumber: String?
-    var thirdDataSource: [CollectionViewCellModel] = []
     var viewModel: ThirdVM
     @IBOutlet weak var collectionViewOutlet: UICollectionView!
     
-    init(thirdDataSource: [CollectionViewCellModel], viewModel: ThirdVM)
+    init(viewModel: ThirdVM)
     {
-        self.thirdDataSource = thirdDataSource
         self.viewModel = viewModel
         super.init(nibName: "ThirdVC", bundle: nil)
     }
@@ -54,13 +52,13 @@ extension ThirdVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return thirdDataSource.count
+        return viewModel.getNumberOfItemsInSection(numberOfItemsInSection: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         
-        let collectionViewCellModel = thirdDataSource[indexPath.row]
+        let collectionViewCellModel = viewModel.thirdCellViewModels[indexPath.row]
         
         let cell = collectionViewOutlet.dequeueReusableCell(for: indexPath) as ThirdVCCollectionViewCell
         
@@ -95,7 +93,7 @@ extension ThirdVC: UIGestureRecognizerDelegate{
         if let indexPath = collectionViewOutlet?.indexPathForItem(at: point)
         {
             collectionViewOutlet.deleteItems(at: [indexPath])
-            thirdDataSource.remove(at: indexPath.item)
+            viewModel.thirdCellViewModels.remove(at: indexPath.item)
             self.view.layoutIfNeeded()
         }
     }
