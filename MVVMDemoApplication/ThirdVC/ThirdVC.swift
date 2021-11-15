@@ -9,11 +9,15 @@ import UIKit
 import Reusable
 
 class ThirdVC: UIViewController {
-        
-    var choosenNumber: String?
-    var viewModel: ThirdVM
-    @IBOutlet weak var collectionViewOutlet: UICollectionView!
+      
+    // MARK: - Privtae @IBOutlet
+    @IBOutlet private weak var collectionViewOutlet: UICollectionView!
+
+    // MARK: - Privtae var
+    private var choosenNumber: String?
+    private var viewModel: ThirdVM
     
+    // MARK: - Init
     init(viewModel: ThirdVM)
     {
         self.viewModel = viewModel
@@ -25,7 +29,7 @@ class ThirdVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: - lifecycle & setup
+    // MARK: - lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -33,6 +37,7 @@ class ThirdVC: UIViewController {
         setupLongGestureRecognizerOnCollection()
     }
     
+    // MARK: - Privtae methods
     private func setupCollectionView()
     {
         collectionViewOutlet.register(cellType: ThirdVCCollectionViewCell.self)

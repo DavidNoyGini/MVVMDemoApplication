@@ -36,9 +36,10 @@ class MainRouter: Router {
     private func moveToHomeVC(startButton: String?,dataPassed: String?)
     {
         guard let firsVC = navigationController?.viewControllers.first(where: { $0 is FirstVC }) as? FirstVC else { return }
-        firsVC.startButton.setTitle(startButton, for: .normal)
+        firsVC.setStartButtonTitle(text: startButton)
+    //    firsVC.startButton.setTitle(startButton, for: .normal)
         firsVC.setPassedDataTitle(dataPassed: dataPassed)
-        firsVC.text = startButton
+  //      firsVC.text = startButton
         navigationController?.popToViewController(firsVC, animated: true)
     }
     
@@ -54,7 +55,6 @@ class MainRouter: Router {
     {
         guard let firsVC = navigationController?.viewControllers.first(where: { $0 is FirstVC }) as? FirstVC else { return }
         let viewModel = ThirdVM(router: self, number: text, delegate: firsVC.viewModel)
-      //  viewModel.thirdVCActivityIndicatorDelegate = firsVC.viewModel
         let vc = ThirdVC(viewModel: viewModel)
         navigationController?.pushViewController(vc, animated: true)
     }

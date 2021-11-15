@@ -10,6 +10,7 @@
 		21911E3B9833AEC39EBF77BF /* Pods_MVVMDemoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F036A50F2735A79FE9BA15D4 /* Pods_MVVMDemoApplication.framework */; };
 		3A035E3227380F6B00B29F25 /* ThirdVCCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A035E3027380F6B00B29F25 /* ThirdVCCollectionViewCell.swift */; };
 		3A035E3327380F6B00B29F25 /* ThirdVCCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A035E3127380F6B00B29F25 /* ThirdVCCollectionViewCell.xib */; };
+		3A2207B62742657C00699CD4 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2207B52742657C00699CD4 /* AlertBuilder.swift */; };
 		3A3338F7273925F000F8CBEE /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338F6273925F000F8CBEE /* MainRouter.swift */; };
 		3A3338FA27392E6100F8CBEE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338F927392E6100F8CBEE /* Router.swift */; };
 		3A3338FD273A78D400F8CBEE /* TableViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3338FC273A78D400F8CBEE /* TableViewProtocols.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		3A035E3027380F6B00B29F25 /* ThirdVCCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdVCCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A035E3127380F6B00B29F25 /* ThirdVCCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThirdVCCollectionViewCell.xib; sourceTree = "<group>"; };
+		3A2207B52742657C00699CD4 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
 		3A3338F6273925F000F8CBEE /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		3A3338F927392E6100F8CBEE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		3A3338FC273A78D400F8CBEE /* TableViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewProtocols.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 				F036A50F2735A79FE9BA15D4 /* Pods_MVVMDemoApplication.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A2207B42742655000699CD4 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				3A2207B52742657C00699CD4 /* AlertBuilder.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		3A3338F827392E5000F8CBEE /* Routers */ = {
@@ -229,6 +239,7 @@
 			children = (
 				3AE713892732BCF500481ED2 /* AppDelegate.swift */,
 				3A3338F827392E5000F8CBEE /* Routers */,
+				3A2207B42742655000699CD4 /* Alert */,
 				3AB98FB02737D27F000B8531 /* Strings */,
 				3AB98FB82737F0DB000B8531 /* Extension */,
 				3A3338FB273A78BD00F8CBEE /* TableViewVM */,
@@ -400,6 +411,7 @@
 				3AB98FB22737D2B8000B8531 /* StringsConstans.swift in Sources */,
 				3AB98FC827380606000B8531 /* CollectionViewCellModel.swift in Sources */,
 				3A333905273AA78A00F8CBEE /* Cities.swift in Sources */,
+				3A2207B62742657C00699CD4 /* AlertBuilder.swift in Sources */,
 				3A33390D273BA5FF00F8CBEE /* FirstVM.swift in Sources */,
 				3A333900273A7A8E00F8CBEE /* FourthVM.swift in Sources */,
 				3A333903273AA74000F8CBEE /* City.swift in Sources */,

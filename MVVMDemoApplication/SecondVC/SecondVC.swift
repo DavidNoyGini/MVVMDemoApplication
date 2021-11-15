@@ -10,13 +10,16 @@ import Reusable
 
 class SecondVC: UIViewController {
     
+    // MARK: - Privtae @IBOutlet
     @IBOutlet private weak var goButtonOutlet: UIButton!
     @IBOutlet private weak var textField: UITextField!
     @IBOutlet private weak var tableView: UITableView!
     
+    // MARK: - Privtae var
     private var viewModel: TableScreenVM
     private var text: String?
     
+    // MARK: - Init
     init(viewModel: TableScreenVM)
     {
         self.viewModel     = viewModel
@@ -28,18 +31,19 @@ class SecondVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: - lifecycle & setup
+    // MARK: - lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         setupTableView()
-        setupGoButton()
+        setupGoButtonAndTextField()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         checkVM()
     }
     
+    // MARK: - Privtae methods
     private func setupTableView()
     {
         tableView.register(cellType: SecondVCTableViewCell.self)
@@ -48,8 +52,9 @@ class SecondVC: UIViewController {
         tableView.isHidden = true
     }
     
-    private func setupGoButton()
+    private func setupGoButtonAndTextField()
     {
+        textField.becomeFirstResponder()
         goButtonOutlet.configuration?.attributedTitle?.font = .systemFont(ofSize: 15)
         goButtonOutlet.configuration?.titlePadding = 2
     }
@@ -70,7 +75,7 @@ class SecondVC: UIViewController {
         }
     }
     
-// MARK: - @IBAction
+    // MARK: - @IBAction
     @IBAction private func goButton(_ sender: UIButton)
     {
         // numberCheck()
@@ -142,4 +147,5 @@ extension SecondVC: TableScreenVMDelegate {
 
 enum AlertState: String {
     case error = "Error"
+    case fetchData = "Fetching Data"
 }

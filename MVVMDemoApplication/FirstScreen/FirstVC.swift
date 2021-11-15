@@ -9,34 +9,39 @@ import UIKit
 
 class FirstVC: UIViewController {
     
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var dataPassedButton: UIButton!
-
-    var text: String?
-    var viewModel: FirstVM
+    // MARK: - Privtae @IBOutlet
+    @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var dataPassedButton: UIButton!
     
-    let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-    
+    // MARK: - Privtae var\let
     private var tapIsUnable: Bool = false
     private var tapCount: Int = 0
+    private var text: String?
+    private let alertBuilder = AlertBuilder()
+
+    // MARK: - Public var
+    var viewModel: FirstVM
     
+    // MARK: - Init
     init(viewModel: FirstVM)
     {
         self.viewModel = viewModel
         super.init(nibName: "FirstVC", bundle: nil)
     }
     
-    required init?(coder: NSCoder) {
+    required init?(coder: NSCoder)
+    {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: - lifecycle & setup
+    // MARK: - lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         setupButtons()
     }
     
+    // MARK: - Privtae methods
     private func setupButtons()
     {
         startButton.configuration?.title = StringsConstans.startButtonTitle
@@ -52,6 +57,13 @@ class FirstVC: UIViewController {
 
         dataPassedButton.configuration?.baseBackgroundColor = .green
         dataPassedButton.configuration?.baseForegroundColor = .black
+    }
+    
+    // MARK: - Public methods
+    func setStartButtonTitle(text: String?)
+    {
+        startButton.setTitle(text, for: .normal)
+        self.text = text
     }
     
     func setPassedDataTitle(dataPassed: String?)
@@ -110,27 +122,14 @@ extension FirstVC {
 extension FirstVC: FirstVMActivityIndicator {
     func showActivityIndicator()
     {
-        activityIndicator.center = view.center
-        activityIndicator.style = .large
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = .red
-        activityIndicator.backgroundColor = .systemTeal
-        activityIndicator.layer.cornerRadius = 10
-        view.addSubview(self.activityIndicator)
-        
-        DispatchQueue.main.async
-        { [weak self] in
-            guard let self = self else {return}
-            self.activityIndicator.startAnimating()
-        }
+        alertBuilder.showAlert(title: AlertState.fetchData.rawValue,
+                               message: StringsConstans.waitForDataMessage,
+                               viewController: self,
+                               shouldIndicate: true)
     }
     
     func dismissActivityIndicator()
     {
-        DispatchQueue.main.async
-        {[weak self] in
-            guard let self = self else {return}
-            self.activityIndicator.stopAnimating()
-        }
+        alertBuilder.dimissAlert()
     }
 }
