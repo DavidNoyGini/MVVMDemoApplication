@@ -13,13 +13,6 @@ class AlertBuilder {
     private var bakgroundEffect = UIVisualEffectView()
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     private let blurEffect = UIBlurEffect(style: .light)
-    private let backgroundView: UIView =
-    {
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .black
-        backgroundView.alpha = 0.0
-        return backgroundView
-    }()
     
     private let alertView: UIView =
     {
@@ -37,10 +30,7 @@ class AlertBuilder {
     {
         
         self.viewController = viewController
-        
-        backgroundView.frame = viewController.view.bounds
-        
-      //  viewController.view.addSubview(backgroundView)
+                
         setBakgroundEffect(viewController: viewController)
         viewController.view.addSubview(alertView)
         viewController.view.bringSubviewToFront(alertView)
@@ -64,7 +54,6 @@ class AlertBuilder {
             UIView.animate(withDuration: 0.25)
             { [weak self] in
                 guard let self = self else {return}
-                self.backgroundView.alpha = 0.6
                 self.bakgroundEffect.isHidden = false
             } completion: { [weak self] _ in
                 guard let self = self else {return}
@@ -83,7 +72,6 @@ class AlertBuilder {
             UIView.animate(withDuration: 0.25)
             { [weak self] in
                 guard let self = self else {return}
-                self.backgroundView.alpha = 0.0
                 self.bakgroundEffect.isHidden = true
                 self.alertView.frame = CGRect(x: 40,
                                               y: viewController.view.frame.size.height,
@@ -93,7 +81,6 @@ class AlertBuilder {
             } completion: { [weak self] _ in
                 guard let self = self else {return}
                 self.alertView.removeFromSuperview()
-                self.backgroundView.removeFromSuperview()
             }
         }
         
