@@ -113,7 +113,6 @@ extension FirstVC {
             guard let self = self else {return}
             self.dataPassedButton.titleLabel?.alpha = 0.3
         }
-        
     }
 }
 
@@ -125,7 +124,13 @@ extension FirstVC: FirstVMActivityIndicator {
         alertBuilder.showAlert(title: AlertState.fetchData.rawValue,
                                message: StringsConstans.waitForDataMessage,
                                viewController: self,
-                               shouldIndicate: true)
+                               shouldIndicate: false,
+                               buttons: .bothButtons)
+        {
+            print("ok")
+        } onCancel: {
+            print("cancel")
+        }
     }
     
     func dismissActivityIndicator()

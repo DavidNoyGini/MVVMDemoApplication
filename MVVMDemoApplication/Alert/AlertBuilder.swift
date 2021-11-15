@@ -9,10 +9,13 @@ import UIKit
 
 class AlertBuilder {
     
+    //MARK: - Private var/let
     private var viewController: UIViewController?
     private var bakgroundEffect = UIVisualEffectView()
     private var activityIndicator = UIActivityIndicatorView(style: .large)
     private let blurEffect = UIBlurEffect(style: .light)
+    private var alertHeight: CGFloat = 160.0
+    private var existsedY:CGFloat = 160.0
     
     private let alertView: UIView =
     {
@@ -23,22 +26,27 @@ class AlertBuilder {
         return alert
     }()
     
+    //MARK: - Instance Methods
     func showAlert(title: String,
                    message: String,
                    viewController: UIViewController,
-                   shouldIndicate: Bool)
+                   shouldIndicate: Bool,
+                   buttons: AlertButtonsState,
+                   onOk: @escaping (() -> Void),
+                   onCancel: @escaping (() -> Void))
     {
-        
         self.viewController = viewController
                 
         setBakgroundEffect(viewController: viewController)
         viewController.view.addSubview(alertView)
         viewController.view.bringSubviewToFront(alertView)
         
+        checkSize(buttons: buttons)
+        
         alertView.frame = CGRect(x: 40,
-                                 y: -160,
+                                 y: -alertHeight,
                                  width: viewController.view.frame.size.width-80,
-                                 height: 160)
+                                 height: alertHeight)
         
         alertView.backgroundColor = .systemGray6
         
@@ -49,15 +57,18 @@ class AlertBuilder {
         {
             addIndicator()
         }
+
+        addButtons(buttons: buttons, onOk: onOk, onCancel: onCancel)
+
         
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25)
             { [weak self] in
                 guard let self = self else {return}
                 self.bakgroundEffect.isHidden = false
+                self.alertView.center = viewController.view.center
             } completion: { [weak self] _ in
                 guard let self = self else {return}
-                self.alertView.center = viewController.view.center
                 self.activityIndicator.startAnimating()
             }
         }
@@ -76,7 +87,7 @@ class AlertBuilder {
                 self.alertView.frame = CGRect(x: 40,
                                               y: viewController.view.frame.size.height,
                                               width: viewController.view.frame.size.width-80,
-                                              height: 160)
+                                              height: self.alertHeight)
                 self.activityIndicator.stopAnimating()
             } completion: { [weak self] _ in
                 guard let self = self else {return}
@@ -84,6 +95,72 @@ class AlertBuilder {
             }
         }
         
+    }
+    
+    //MARK: - Private methods
+    
+    private func addButtons(buttons: AlertButtonsState,
+                            onOk: @escaping (() -> Void),
+                            onCancel: @escaping (() -> Void))
+    {
+        switch buttons {
+        case .none:
+            break
+        case .okButton:
+            let okButton = getButton(title: "OK", style: .default)
+            let okAction = UIAction { _ in
+                onOk()
+            }
+            okButton.addAction(okAction, for: .touchUpInside)
+            alertView.addSubview(okButton)
+        case .cancelButton:
+            let cancelButton = getButton(title: "cancel", style: .cancel)
+            let cancelAction = UIAction { _ in
+                onCancel()
+            }
+            cancelButton.addAction(cancelAction, for: .touchUpInside)
+            alertView.addSubview(cancelButton)
+        case .bothButtons:
+            let okButton = getButton(title: "OK", style: .default)
+            let okAction = UIAction { _ in
+                onOk()
+            }
+            okButton.addAction(okAction, for: .touchUpInside)
+            alertView.addSubview(okButton)
+            
+            let cancelButton = getButton(title: "cancel", style: .cancel)
+            let cancelAction = UIAction { _ in
+                onCancel()
+            }
+            cancelButton.addAction(cancelAction, for: .touchUpInside)
+            alertView.addSubview(cancelButton)
+        }
+    }
+    
+    private func checkSize(buttons: AlertButtonsState)
+    {
+        switch buttons {
+        case .none:
+            alertHeight = 160
+        case .okButton,.cancelButton:
+            alertHeight = 210
+        case .bothButtons:
+            alertHeight = 260
+        }
+    }
+
+    private func getButton(title: String, style: AlertActionStyle) -> UIButton
+    {
+        let button = UIButton(frame: CGRect(x: 0,
+                                            y: existsedY,
+                                            width: alertView.frame.size.width,
+                                            height: 50))
+        existsedY += 50
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(style.getColorStyle(), for: .normal)
+        button.layer.borderWidth = 0.5
+        button.layer.borderColor = UIColor.systemGray4.cgColor
+        return button
     }
     
     private func setBakgroundEffect(viewController: UIViewController)
@@ -98,7 +175,7 @@ class AlertBuilder {
         let titleLabel = UILabel(frame: CGRect(x: 0,
                                                y: 0,
                                                width: alertView.frame.size.width,
-                                               height: 50))
+                                               height: 60))
         titleLabel.text = title
         titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
         titleLabel.textAlignment = .center
@@ -108,9 +185,9 @@ class AlertBuilder {
     private func addMessage(message: String)
     {
         let messageLabel = UILabel(frame: CGRect(x: 0,
-                                               y: 50,
+                                               y: 60,
                                                width: alertView.frame.size.width,
-                                               height: 60))
+                                               height: 50))
         messageLabel.numberOfLines = 0
         messageLabel.text = message
         messageLabel.font = messageLabel.font.withSize(20)
@@ -130,4 +207,31 @@ class AlertBuilder {
         alertView.addSubview(activityIndicator)
         
     }
+}
+
+enum AlertState: String {
+    case error = "Error"
+    case fetchData = "Fetching Data"
+}
+
+enum AlertActionStyle {
+    case `default`
+    case cancel
+    
+    func getColorStyle() -> UIColor
+    {
+        switch self {
+        case .default:
+            return .link
+        case .cancel:
+            return .red
+        }
+    }
+}
+
+enum AlertButtonsState {
+    case none
+    case okButton
+    case cancelButton
+    case bothButtons
 }

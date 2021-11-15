@@ -145,7 +145,3 @@ extension SecondVC: TableScreenVMDelegate {
     }
 }
 
-enum AlertState: String {
-    case error = "Error"
-    case fetchData = "Fetching Data"
-}
