@@ -14,5 +14,5 @@ struct PicsumService {
     static func getImage(url: String) -> UIImage?
     {
         return ImageLoader.getASync(url)
-    }
+    }  
 }

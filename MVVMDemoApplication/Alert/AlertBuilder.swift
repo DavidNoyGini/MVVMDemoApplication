@@ -30,7 +30,7 @@ class AlertBuilder {
     func showAlert(title: String,
                    message: String,
                    viewController: UIViewController,
-                   shouldIndicate: Bool,
+                   isActivityIndicatorVisible: Bool,
                    buttons: AlertButtonsState,
                    onOk: @escaping (() -> Void),
                    onCancel: @escaping (() -> Void))
@@ -53,7 +53,7 @@ class AlertBuilder {
         
         addTitle(title: title)
         addMessage(message: message)
-        if shouldIndicate
+        if isActivityIndicatorVisible
         {
             addIndicator()
         }
@@ -107,28 +107,28 @@ class AlertBuilder {
         case .none:
             break
         case .okButton:
-            let okButton = getButton(title: "OK", style: .default)
+            let okButton = makeButton(title: "OK", style: .default)
             let okAction = UIAction { _ in
                 onOk()
             }
             okButton.addAction(okAction, for: .touchUpInside)
             alertView.addSubview(okButton)
         case .cancelButton:
-            let cancelButton = getButton(title: "cancel", style: .cancel)
+            let cancelButton = makeButton(title: "cancel", style: .cancel)
             let cancelAction = UIAction { _ in
                 onCancel()
             }
             cancelButton.addAction(cancelAction, for: .touchUpInside)
             alertView.addSubview(cancelButton)
         case .bothButtons:
-            let okButton = getButton(title: "OK", style: .default)
+            let okButton = makeButton(title: "OK", style: .default)
             let okAction = UIAction { _ in
                 onOk()
             }
             okButton.addAction(okAction, for: .touchUpInside)
             alertView.addSubview(okButton)
             
-            let cancelButton = getButton(title: "cancel", style: .cancel)
+            let cancelButton = makeButton(title: "cancel", style: .cancel)
             let cancelAction = UIAction { _ in
                 onCancel()
             }
@@ -149,7 +149,7 @@ class AlertBuilder {
         }
     }
 
-    private func getButton(title: String, style: AlertActionStyle) -> UIButton
+    private func makeButton(title: String, style: AlertActionStyle) -> UIButton
     {
         let button = UIButton(frame: CGRect(x: 0,
                                             y: existsedY,

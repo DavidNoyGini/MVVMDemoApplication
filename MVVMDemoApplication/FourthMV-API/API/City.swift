@@ -15,7 +15,7 @@ struct Ciry {
     }
 }
 
-extension Ciry: Decodable {
+extension Ciry: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         city = try values.decode(String.self, forKey: .city)

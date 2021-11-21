@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Cities: Decodable {
+struct Cities: Codable {
     let records: [Ciry]
 }

@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import Alamofire
 
-struct APIResult: Decodable {
+struct APIResult: Decodable, Encodable {
     let result: Cities
 }

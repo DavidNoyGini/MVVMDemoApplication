@@ -124,13 +124,14 @@ extension FirstVC: FirstVMActivityIndicator {
         alertBuilder.showAlert(title: AlertState.fetchData.rawValue,
                                message: StringsConstans.waitForDataMessage,
                                viewController: self,
-                               shouldIndicate: false,
-                               buttons: .bothButtons)
-        {
-            print("ok")
-        } onCancel: {
-            print("cancel")
-        }
+                               isActivityIndicatorVisible: true,
+                               buttons: .none)
+                                                    {
+                                                        print("ok")
+                                                    } onCancel:
+                                                    {
+                                                        print("cancel")
+                                                    }
     }
     
     func dismissActivityIndicator()
